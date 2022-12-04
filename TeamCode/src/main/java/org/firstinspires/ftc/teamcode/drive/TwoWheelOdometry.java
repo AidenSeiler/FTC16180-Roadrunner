@@ -32,7 +32,7 @@ import java.util.List;
  *    \--------------/
  *
  */
-public class TwoWheelTrackingLocalizer extends TwoTrackingWheelLocalizer {
+public class TwoWheelOdometry extends TwoTrackingWheelLocalizer {
     public static double TICKS_PER_REV = 2500;
     public static double WHEEL_RADIUS = 1; // in
     public static double GEAR_RATIO = 1; // output (wheel) speed / input (encoder) speed
@@ -54,7 +54,7 @@ public class TwoWheelTrackingLocalizer extends TwoTrackingWheelLocalizer {
 
     private SampleMecanumDrive drive;
 
-    public TwoWheelTrackingLocalizer(HardwareMap hardwareMap, SampleMecanumDrive drive) {
+    public TwoWheelOdometry(HardwareMap hardwareMap, SampleMecanumDrive drive) {
         super(Arrays.asList(
                 new Pose2d(PARALLEL_X, PARALLEL_Y, 0),
                 new Pose2d(PERPENDICULAR_X, PERPENDICULAR_Y, Math.toRadians(90))
