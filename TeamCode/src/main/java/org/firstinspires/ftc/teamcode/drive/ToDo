@@ -3,6 +3,3 @@ Drive Constants
 Sample mecanum
     Remap gyro axis
     set correct reversals
-TwoWheelTrackingLocalizer
-    location
-    rev hub encoder
