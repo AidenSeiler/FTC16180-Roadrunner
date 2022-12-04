@@ -30,8 +30,7 @@ import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequence;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequenceBuilder;
 import org.firstinspires.ftc.teamcode.trajectorysequence.TrajectorySequenceRunner;
 import org.firstinspires.ftc.teamcode.util.LynxModuleUtil;
-import org.firstinspires.ftc.teamcode.util.BNO055IMUUtil;
-import org.firstinspires.ftc.teamcode.util.AxisDirection;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -147,7 +146,7 @@ public class SampleMecanumDrive extends MecanumDrive {
         // TODO: if desired, use setLocalizer() to change the localization method
         // for instance, setLocalizer(new ThreeTrackingWheelLocalizer(...));
 
-        setLocalizer(new TwoWheelTrackingLocalizer(hardwareMap, this));
+        setLocalizer(new TwoWheelOdometry(hardwareMap, this));
         
         trajectorySequenceRunner = new TrajectorySequenceRunner(follower, HEADING_PID);
     }
