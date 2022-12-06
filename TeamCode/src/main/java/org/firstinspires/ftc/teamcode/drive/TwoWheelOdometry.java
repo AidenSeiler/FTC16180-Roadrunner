@@ -66,7 +66,7 @@ public class TwoWheelOdometry extends TwoTrackingWheelLocalizer {
         perpEncoder = new Encoder(hardwareMap.get(DcMotorEx.class, "perpEncoder"));
 
         // TODO: reverse any encoders using Encoder.setDirection(Encoder.Direction.REVERSE)
-        perpEncoder.setDirection(Encoder.Direction.REVERSE);
+        parallelEncoder.setDirection(Encoder.Direction.REVERSE);
     }
 
     public static double encoderTicksToInches(double ticks) {
