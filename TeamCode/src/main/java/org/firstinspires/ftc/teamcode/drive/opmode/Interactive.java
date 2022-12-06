@@ -52,6 +52,7 @@ public class Interactive extends OpMode
         config.liftEncoder();
         config.openServos();
         telemetry.addData("Status", "Initialized");
+
     }
 
     @Override
