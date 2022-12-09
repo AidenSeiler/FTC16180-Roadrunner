@@ -37,8 +37,8 @@ public class TwoWheelOdometry extends TwoTrackingWheelLocalizer {
     public static double WHEEL_RADIUS = 1; // in
     public static double GEAR_RATIO = 1; // output (wheel) speed / input (encoder) speed
 
-    public static double X_Multiplier = 1;
-    public static double Y_Multiplier = 1;
+    public static double X_Multiplier = 1.036;
+    public static double Y_Multiplier = 1.025;
 
 
     public static double PARALLEL_X = 1.125; // X is the up and down direction
@@ -66,7 +66,7 @@ public class TwoWheelOdometry extends TwoTrackingWheelLocalizer {
         perpEncoder = new Encoder(hardwareMap.get(DcMotorEx.class, "perpEncoder"));
 
         // TODO: reverse any encoders using Encoder.setDirection(Encoder.Direction.REVERSE)
-        parallelEncoder.setDirection(Encoder.Direction.REVERSE);
+        perpEncoder.setDirection(Encoder.Direction.REVERSE);
     }
 
     public static double encoderTicksToInches(double ticks) {
