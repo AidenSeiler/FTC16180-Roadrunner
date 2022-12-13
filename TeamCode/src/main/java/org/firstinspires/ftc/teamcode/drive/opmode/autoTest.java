@@ -27,14 +27,22 @@ public class autoTest extends LinearOpMode {
         drive.setPoseEstimate(startPose);
 
         Trajectory toCone = drive.trajectoryBuilder(startPose)
-                .lineToConstantHeading(new Vector2d(33,-45))//inlinWithCone
+                .lineToConstantHeading(new Vector2d(33,-45))//approach cone and then scan
                 .build();
         Trajectory moveCone = drive.trajectoryBuilder(toCone.end())
-                .splineTo(new Vector2d(65,-33), Math.toRadians(350))//inlinWithCone
-                .splineTo(new Vector2d(58.75,-33), Math.toRadians(90))//inlinWithCone
+                .splineTo(new Vector2d(65,-36), Math.toRadians(0))//turn right
+                .splineToConstantHeading(new Vector2d(58, -36), Math.toRadians(0))//push cone
+                .splineTo(new Vector2d(59, -30), Math.toRadians(90))//backwards turn
+                .splineTo(new Vector2d(47, -12), Math.toRadians(180))//turn left
+                .splineToSplineHeading(new Pose2d(23.5, -12, Math.toRadians(90)), Math.toRadians(180))//approach pole
+                .addDisplacementMarker(() -> {config.liftUp();})
+                .splineToConstantHeading(new Vector2d(23.5, -5), Math.toRadians(180))//gotoPole
+                .addDisplacementMarker(() -> {config.openServos();})//drop cone 1
+                .splineToConstantHeading(new Vector2d(23.5, -12), Math.toRadians(180))//goawayfromPole
+                .splineToSplineHeading(new Pose2d(64, -12, Math.toRadians(0)), Math.toRadians(180))//approach pole
+
+
                 .build();
-
-
 
 
         waitForStart();
@@ -47,6 +55,8 @@ public class autoTest extends LinearOpMode {
             String color = config.getColor();
             telemetry.addData("Color: ", color);
             drive.followTrajectory(moveCone);
+
+
 
         }
         telemetry.addData("Lift", "target: %d; current: %d", config.lift.getTargetPosition(), config.lift.getCurrentPosition());
