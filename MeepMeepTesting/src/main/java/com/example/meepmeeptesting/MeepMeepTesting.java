@@ -12,41 +12,8 @@ public class MeepMeepTesting {
                 .setConstraints(50, 100, Math.toRadians(180), Math.toRadians(180), 12)
 
                 .followTrajectorySequence(drive -> drive.trajectorySequenceBuilder(new Pose2d(30.5, -65, Math.toRadians(90)))
-                        //Detect Color
-                        .strafeRight(0.5) //inlinWithCone
-                        .lineTo(new Vector2d(31,-41.25)) //approachCone
-
-                        //Get to first cone
-                        .splineTo(new Vector2d(62, -35.25), Math.toRadians(0))//moveCone
-                        .lineToLinearHeading(new Pose2d(58.75, -16, Math.toRadians(90)))//reverse, reverse
-                        .lineToConstantHeading(new Vector2d(23.5, -16))//strafe to pole
-                        .lineTo(new Vector2d(23.5, -4))//approach pole and armup at the same time
-                        //armup
-                        .lineTo(new Vector2d(23.5, -16))//retracts from pole
-                        //armdown
-
-                        //Second Cone
-                        .lineToLinearHeading(new Pose2d(66, -11.75, Math.toRadians(0)))//cone2
-                        .lineToLinearHeading(new Pose2d(23.5, -16, Math.toRadians(90)))//back to pole
-                        .lineTo(new Vector2d(23.5, -4))//approach pole and armup at the same time
-                        .lineTo(new Vector2d(23.5, -16))//retracts from pole
-
-                        //Third Cone
-                        .lineToLinearHeading(new Pose2d(66, -11.75, Math.toRadians(0)))//cone3
-                        .lineToLinearHeading(new Pose2d(23.5, -16, Math.toRadians(90)))//back to pole
-                        .lineTo(new Vector2d(23.5, -4))//approach pole and armup at the same time
-                        .lineTo(new Vector2d(23.5, -16))//retracts from pole
-
-                        //Fourth Cone
-                        .lineToLinearHeading(new Pose2d(66, -11.75, Math.toRadians(0)))//cone4
-                        .lineToLinearHeading(new Pose2d(23.5, -16, Math.toRadians(90)))//back to pole
-                        .lineTo(new Vector2d(23.5, -4))//approach pole and armup at the same time
-
-                        //ColorPark
-                        .lineTo(new Vector2d(23.5, -11.75))//approach pole and armup at the same time
-                        .lineTo(new Vector2d(35.25, -11.75))//approach pole and armup at the same time
-                        .lineToConstantHeading(new Vector2d(35.25, -35.25))//approach pole and armup at the same time
-                        .lineToConstantHeading(new Vector2d(11.75, -35.25))//approach pole and armup at the same time
+                        .lineToConstantHeading(new Vector2d(33,-46))//inlinWithCone
+                        .splineTo(new Vector2d(34,-41), Math.toRadians(0))//inlinWithCone
 
 
 
