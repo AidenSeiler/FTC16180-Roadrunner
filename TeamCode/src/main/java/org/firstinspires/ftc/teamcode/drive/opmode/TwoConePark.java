@@ -9,9 +9,9 @@ import com.acmerobotics.roadrunner.trajectory.Trajectory;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
-@Autonomous(name="SuperFunkyAuto", group="Linear Opmode")
+@Autonomous(name="TwoConePark", group="Linear Opmode")
 
-public class EpicAutonomous extends LinearOpMode {
+public class TwoConePark extends LinearOpMode {
     private HardwareConfig config = new HardwareConfig();
 
     @Override
