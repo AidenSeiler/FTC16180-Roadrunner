@@ -27,22 +27,23 @@ public class autoTest extends LinearOpMode {
         Pose2d startPose = new Pose2d(31, -65, Math.toRadians(90));
         drive.setPoseEstimate(startPose);
 
-        Trajectory scan = drive.trajectoryBuilder(startPose)
-                .lineToConstantHeading(new Vector2d(35,-42.5))//approach cone and then scan
+        TrajectorySequence scan = drive.trajectorySequenceBuilder(startPose)
+                .lineToConstantHeading(new Vector2d(32,-42.5))//approach cone and then scan
+                .waitSeconds(1)
                 .build();
         TrajectorySequence EpicAuto = drive.trajectorySequenceBuilder(new Pose2d(22, -45, Math.toRadians(90)))
-                .splineTo(new Vector2d(55,-36), Math.toRadians(0))//turn right
+                .splineTo(new Vector2d(55,-33), Math.toRadians(0))//turn right
                 .splineToConstantHeading(new Vector2d(50, -36), Math.toRadians(0))//backup from cone
                 .splineTo(new Vector2d(55,-24), Math.toRadians(90))//turn left
                 .splineTo(new Vector2d(47, -12), Math.toRadians(180))//turn left
                 .splineToSplineHeading(new Pose2d(19, -15, Math.toRadians(90)), Math.toRadians(180))//approach pole
                 .addDisplacementMarker(() -> {config.liftUp();})
                 .forward(4)
-                .waitSeconds(2)
+                .waitSeconds(1.5)
                 .addDisplacementMarker(() -> {config.openServos();})//drop cone 1
                 .addDisplacementMarker(() -> {config.liftDown();})
                 .back(7)
-                .lineToLinearHeading(new Pose2d(58, -15, Math.toRadians(0)))//approach pole
+                .lineToLinearHeading(new Pose2d(58, -15, Math.toRadians(0)))//approach cone2
                 .build();
 
 
@@ -53,7 +54,7 @@ public class autoTest extends LinearOpMode {
             config.closeServos();
             sleep(100);
             config.lift.setTargetPosition(100);
-            drive.followTrajectory(scan);
+            drive.followTrajectorySequence(scan);
             String color = config.getColor();
             telemetry.addData("Color: ", color);
             drive.followTrajectorySequence(EpicAuto);
