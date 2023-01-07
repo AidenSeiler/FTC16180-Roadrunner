@@ -103,7 +103,7 @@ public class HardwareConfig {
     }
 
     public void liftDown(){
-        lift.setTargetPosition(100);
+        lift.setTargetPosition(0);
     }
 
     public void smallLift(){
@@ -115,12 +115,10 @@ public class HardwareConfig {
     }
 
     public void closeServos(){
-        leftServo.setPosition(0.4);
-        rightServo.setPosition(0.15);
+        leftServo.setPosition(0.7);
     }
     public void openServos(){
-        leftServo.setPosition(0.32);
-        rightServo.setPosition(0.24);
+        leftServo.setPosition(0.5);
     }
     public String getColor(){
         String coneColor = "undefined";
